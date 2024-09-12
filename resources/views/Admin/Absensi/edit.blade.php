@@ -51,10 +51,10 @@
 
                                                 <div class="col-md-6">
                                                     <label for="hari_kerja" class="form-label">Pilihan Hari Kerja</label>
-                                                    <select class="form-control" name="hari_kerja" id="hari_kerja">
+                                                    <select class="form-control" name="Hari_Kerja" id="Hari_Kerja">
                                                         <option value="">--Pilih Hari--</option>
-                                                        <option value="Hari Kerja" {{ $absensi->hari_kerja == 'Hari Kerja' ? 'selected' : '' }}>Hari Kerja</option>
-                                                        <option value="Hari Libur" {{ $absensi->hari_kerja == 'Hari Libur' ? 'selected' : '' }}>Hari Libur Nasional</option>
+                                                        <option value="Hari Kerja" {{ $absensi->Hari_Kerja == 'Hari Kerja' ? 'selected' : '' }}>Hari Kerja</option>
+                                                        <option value="Hari Libur" {{ $absensi->Hari_Kerja == 'Hari Libur Nasional' ? 'selected' : '' }}>Hari Libur Nasional</option>
                                                     </select>
                                                     @error('hari_kerja')
                                                         <div class="text-danger">{{ $message }}</div>

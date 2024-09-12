@@ -20,11 +20,11 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Lokasi Unit Kerja</th>
-                                                <td>{{ $areakerja->Lokasi_UnitKerja }}</td>
+                                                <td>{{ $areakerja->Lokasi}}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Klasifikasi Bidang</th>
-                                                <td>{{ $areakerja->Klasifikasi_Bidang }}</td>
+                                                <td>{{ $areakerja->pegawai->Klasifikasi_Bidang }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Tanggal Mulai</th>

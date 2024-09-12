@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Landing Page//
-Route::get('LandingPage',[LandingPageController::class,'index']);
+Route::get('/',[LandingPageController::class,'index']) ;
 Route::get('Login',[AuthController::class,'login']);
 Route::post('Login',[AuthController::class,'loginProcess']);
 Route::get('Register',[AuthController::class,'Register']);
@@ -43,7 +43,7 @@ Route::get('DataPegawai/{pegawai}/edit', [DataPegawaiController::class, 'edit'])
 Route::put('DataPegawai/{pegawai}', [DataPegawaiController::class, 'update']);
 Route::delete('DataPegawai/{pegawai}', [DataPegawaiController::class, 'destroy']);
 Route::post('DataPegawai/import', [DataPegawaiController::class, 'import_process']);
-Route::get('/search-pegawai', [AbsensiController::class, 'searchPegawai']);
+Route::get('Data-Pegawai-pdf',[DataPegawaiController::class,'generatePDF']);
 
 
 
@@ -58,6 +58,8 @@ Route::get('Absensi/{absensi}/edit',[AbsensiController::class,'edit']);
 Route::put('Absensi/{absensi}',[AbsensiController::class,'update']);
 Route::delete('Absensi/{absensi}',[AbsensiController::class,'destroy']);
 Route::get('RekapAbsensi', [AbsensiController::class, 'RekapAbsensi']);
+Route::get('/search-pegawai', [AbsensiController::class, 'searchPegawai']);
+Route::get('Absensi-pdf',[AbsensiController::class,'generatePDF']);
 
 
 
@@ -70,6 +72,8 @@ Route::get('MonitoringOvertime/{monitoringovertime}/edit',[MonitoringOvertimeCon
 Route::put('MonitoringOvertime/{monitoringovertime}',[MonitoringOvertimeController::class,'update']);
 Route::delete('MonitoringOvertime/{monitoringovertime}',[MonitoringOvertimeController::class,'destroy']);
 Route::get('RekapMonitoring',[MonitoringOvertimeController::class,'RekapMonitoring']);
+Route::get('Monitoring-pdf',[MonitoringOvertimeController::class,'generatePDF']);
+
 
 
 

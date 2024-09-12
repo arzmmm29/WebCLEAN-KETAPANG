@@ -2,11 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>WebCLEAN-KETAPANG</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
+    <title>Monitoring</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            color: black;
+        }
+
+        .table-container {
+            margin: 20px;
+        }
+    </style>
 
     <!-- App favicon -->
     {{-- <link rel="shortcut icon" href="{{url('/')}}/admin-assets/assets/images/favicon.ico"> --}}
@@ -49,51 +55,50 @@
     <link href="{{ url('/') }}/admin-assets/assets/vendor/select2/css/select2.min.css" rel="stylesheet"
         type="text/css" />
 </head>
-
 <body>
-    <!-- Begin page -->
-    <div class="wrapper">
-        @if (Auth::check())
+    <center>
+        <!-- ubah ke logo sistem nantik ye im -->
+        <img class="mb-3 mt-3" src="{{ url('public') }}/assets/img/pf.png" alt="Logo" height="100" width="240">
+        <h3>Daftar Data Monitoring</h3>
+        <hr style="width: 50%; border-width: 5px; color: black">
+    </center>
 
-        @endif
-
-        <!-- ========== Topbar Start ========== -->
-        <x-layouts.header />
-        <!-- ========== Topbar End ========== -->
-        <!-- ========== Left Sidebar Start ========== -->
-        <x-layouts.sidebar />
-        <!-- ========== Left Sidebar End ========== -->
-
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
-
-        <div class="content-page">
-            <div class="content">
-                <x-utils.notif />
-
-                <!-- Start Content-->
-                {!! $slot !!}
-                <!-- container -->
-
+    <div class="container">
+        <div class="bootstrap-data-table-panel table_22">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th class="text-center" width="5%">No</th>
+                            <th class="text-center">Nama Pegawai</th>
+                            <th class="text-center">Tempat Lahir</th>
+                            <th class="text-center">Tanggal Lahir</th>
+                            <th class="text-center">Jenis Kelamin</th>
+                            <th class="text-center">Jam Lembur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($list_monitoringovertime as $index => $monitoringovertime)
+                            <tr>
+                                <td class="text-center">{{ $index + 1 }}</td>
+                                <td class="text-center">{{ $monitoringovertime->Pegawai->Nama }}</td> <!-- Tampilkan hanya nama -->
+                                <td class="text-center">{{ $monitoringovertime->Pegawai->Kota_Kelahiran }}</td>
+                                <td class="text-center">{{ $monitoringovertime->Pegawai->Tanggal_Lahir}}</td>
+                                <td class="text-center">{{ $monitoringovertime->Pegawai->Jenis_Kelamin }}</td>
+                                <td class="text-center">{{ $monitoringovertime->Jam_Lembur }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <!-- content -->
-
-            <!-- Footer Start -->
-            <x-layouts.footer />
-            <!-- end Footer -->
-
         </div>
-
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
-
     </div>
-    <!-- END wrapper -->
-    <!-- jQuery -->
-    <!-- Load jQuery first -->
+</body>
 
+</html>
+<script>
+    window.print();
+</script>
 
     <!-- Vendor js -->
     <script src="{{ url('/') }}/admin-assets/assets/js/vendor.min.js"></script>
@@ -149,24 +154,7 @@
     @stack('script')
 
 
-    <script>
-        $(document).ready(function() {
-            $('#basic-datatable').DataTable({
-                "pagingType": "simple_numbers", // for showing the pagination controls like "Showing 1 to 10 of 57 entries"
-                "lengthMenu": [10, 25, 50, 75, 100], // entries dropdown options
-                "language": {
-                    "search": "Search:", // Customize the search placeholder text
-                    "lengthMenu": "Showing  _MENU_ entri",
-                    "info": "Showing _START_ sampai _END_ dari _TOTAL_ entri",
-                    "paginate": {
-                        "first": "Pertama",
-                        "last": "Terakhir",
 
-                    }
-                }
-            });
-        });
-    </script>
 
 </body>
 

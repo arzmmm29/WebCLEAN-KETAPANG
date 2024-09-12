@@ -12,11 +12,14 @@
                                         <div class="card-body">
                                             <h4 class="card-title">DATA ABSENSI</h4>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 d-flex justify-content-end">
+                                            <a href="{{url('Absensi-pdf')}}"
+                                            class="btn btn-sm btn-outline-danger waves-effect waves-light">
+                                            <i class="bi bi-file-earmark-pdf-fill"></i> Export PDF
+                                         </a>
                                             <a href="{{ url('Absensi/create') }}"
-                                                class="btn btn-sm btn-outline-primary  waves-effect waves-light float-end"><i
-                                                    class="bi bi-plus"></i>
-                                                Tambah Data Absensi
+                                                class="btn btn-sm btn-outline-primary waves-effect waves-light mr-2">
+                                                <i class="bi bi-plus"></i> Tambah Data Absensi
                                             </a>
                                         </div>
                                     </div>
@@ -29,7 +32,7 @@
                                                 class="table table-striped table-bordered dt-responsive nowrap w-100">
                                                 <thead>
                                                     <tr>
-                                                        <th width="10px">no.</th>
+                                                        <th width="10px">No.</th>
                                                         <th width="100px">Aksi</th>
                                                         <th width="100px">Tanggal</th>
                                                         <th>Nama Pegawai</th>
@@ -46,14 +49,14 @@
                                                                 <div class="btn-group ml-2">
                                                                     <a href="{{ url('Absensi', $absensi->id) }}/edit"
                                                                         class="btn btn-sm btn-outline-warning btn-mat">
-                                                                        <i class="bi bi-pencil"></i></a>
+                                                                        <i class="bi bi-pencil"></i>
+                                                                    </a>
                                                                     <x-button.delete url="Absensi"
                                                                         id="{{ $absensi->id }}" />
-
                                                                 </div>
                                                             </td>
                                                             <td>{{ $absensi->tgl_absensi }}</td>
-                                                            <td>  {{ $absensi->Pegawai ? $absensi->Pegawai->Nama : 'Nama Tidak Ditemukan' }}</td>
+                                                            <td>{{ $absensi->Pegawai ? $absensi->Pegawai->Nama : 'Nama Tidak Ditemukan' }}</td>
                                                             <td>{{ $absensi->shif }}</td>
                                                             <td>{{ $absensi->Hari_Kerja }}</td>
                                                             <td>{{ $absensi->Status_Kehadiran }}</td>

@@ -46,8 +46,8 @@ class DataPegawaiController extends Controller
         'Email.unique' => 'Email sudah terdaftar.',
         'FTK_NonFTK.required' => 'FTK/NonFTK wajib diisi.',
         'Jabatan.required' => 'Jabatan wajib diisi.',
-        'Kode_PRK.required' => 'Kode PRK wajib diisi.',
         'Status.required' => 'Status wajib diisi.',
+        'Kode_PRK.required' => 'Kode PRK wajib diisi.',
         'Klasifikasi_Bidang.required' => 'Klasifikasi bidang wajib diisi.',
         'Bagian.required' => 'Bagian bidang wajib diisi.',
         'Nomor_BPJS_Kesehatan.required' => 'Nomor BPJS Kesehatan wajib diisi.',
@@ -67,7 +67,7 @@ class DataPegawaiController extends Controller
     ];
 
     $validator = Validator::make($request->all(), [
-        'NID' => 'required|string|max:255',
+        'NID' => 'required|string|max:255|unique:pegawai,NID',
         'Nama' => 'required|string|max:255',
         'Kota_Kelahiran' => 'required|string|max:255',
         'Tanggal_Lahir' => [
@@ -85,8 +85,8 @@ class DataPegawaiController extends Controller
         'Email' => 'required|string|email|max:255|unique:pegawai,Email',
         'FTK_NonFTK' => 'required|string|max:255',
         'Jabatan' => 'required|string|max:255',
-        'Kode_PRK' => 'required|string|max:255',
         'Status' => 'required|string|max:255',
+        'Kode_PRK' => 'required|string|max:255',
         'Klasifikasi_Bidang' => 'required|string|max:255',
         'Bagian' => 'required|string|max:255',
         'Nomor_BPJS_Kesehatan' => 'required|string|max:16|unique:pegawai,Nomor_BPJS_Kesehatan',
@@ -123,8 +123,8 @@ class DataPegawaiController extends Controller
     $pegawai->Email = $request->input('Email');
     $pegawai->FTK_NonFTK = $request->input('FTK_NonFTK');
     $pegawai->Jabatan = $request->input('Jabatan');
-    $pegawai->Kode_PRK = $request->input('Kode_PRK');
     $pegawai->Status = $request->input('Status');
+    $pegawai->Kode_PRK = $request->input('Kode_PRK');
     $pegawai->Klasifikasi_Bidang = $request->input('Klasifikasi_Bidang');
     $pegawai->Bagian = $request->input('Bagian');
     $pegawai->Nomor_BPJS_Kesehatan = $request->input('Nomor_BPJS_Kesehatan');
@@ -177,8 +177,8 @@ class DataPegawaiController extends Controller
             'Email' => 'required|email|max:100',
             'FTK_NonFTK' => 'required|string|max:50',
             'Jabatan' => 'required|string|max:100',
-            'Kode_PRK' => 'required|string|max:50',
             'Status' => 'required|string|max:50',
+            'Kode_PRK' => 'required|string|max:50',
             'Klasifikasi_Bidang' => 'required|string|max:100',
             'Bagian' => 'required|string|max:100',
             'Nomor_BPJS_Kesehatan' => 'required|string|max:50',
@@ -298,8 +298,8 @@ class DataPegawaiController extends Controller
                 'Atasan' => $rowData[24],
                 'Kabupaten_Kota' => $rowData[25],
                 'Provinsi' => $rowData[26],
-                'Kode_PRK' => $rowData[27],
-                'Status' => $rowData[28],
+                'Status' => $rowData[27],
+                'Kode_PRK' => $rowData[28],
                 'Bagian' => $rowData[29],
             ]);
         }
@@ -310,5 +310,11 @@ class DataPegawaiController extends Controller
         return back()->withErrors(['file' => 'Terjadi kesalahan saat memproses file: ' . $e->getMessage()]);
     }
 }
+
+public function generatePDF()
+    {
+        $data['list_pegawai'] = Pegawai::all();
+        return view('Admin.DataPegawai.Datapegawai-pdf', $data);
+    }
 
 }

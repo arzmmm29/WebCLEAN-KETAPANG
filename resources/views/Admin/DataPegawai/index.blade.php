@@ -13,6 +13,10 @@
                                             <h4 class="card-title">DATA PEGAWAI</h4>
                                         </div>
                                         <div class="col-md-12 text-end">
+                                            <a href="{{url('Data-Pegawai-pdf')}}"
+                                            class="btn btn-sm btn-outline-danger waves-effect waves-light">
+                                            <i class="bi bi-file-earmark-pdf-fill"></i> Export PDF
+                                         </a>
                                             <a href="{{ url('DataPegawai/create') }}"
                                                 class="btn btn-sm btn-outline-primary waves-effect waves-light float-end">
                                                 <i class="bi bi-plus"></i> Tambah Data Pegawai

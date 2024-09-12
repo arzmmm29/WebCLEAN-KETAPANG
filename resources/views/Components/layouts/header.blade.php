@@ -123,7 +123,7 @@
                 </div>
             </li>
 
-          
+
 
             <li class="dropdown me-md-2">
                 <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
@@ -172,7 +172,7 @@
                     </a>
 
                     <!-- item-->
-                    <a href="{{ url('LandingPage') }}" class="dropdown-item">
+                    <a href="{{ url('/') }}" class="dropdown-item">
                         <i class="ri-logout-box-fill align-middle me-1"></i>
                         <span>Logout</span>
                     </a>

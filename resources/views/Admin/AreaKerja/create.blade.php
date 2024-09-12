@@ -20,6 +20,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
+                                    <label for="validationCustom05" class="form-label">Lokasi</label>
+                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Lokasi" required name="Lokasi">
+                                    <div class="invalid-feedback">
+                                        Masukan Tanggal Masuk Kerja.
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
                                     <label for="validationCustom05" class="form-label">Tanggal Masuk Kerja</label>
                                     <input type="date" class="form-control" id="validationCustom04" placeholder="Tanggal Masuk Kerja" required name="Tanggal_Mulai">
                                     <div class="invalid-feedback">

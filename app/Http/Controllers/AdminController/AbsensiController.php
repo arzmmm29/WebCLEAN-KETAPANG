@@ -191,4 +191,15 @@ class AbsensiController extends Controller
             'filterMonth' => $filterMonth
         ]);
     }
+
+
+    public function generatePDF()
+    {
+        // Mengambil hanya nama pegawai
+        $data['list_absensi'] = Absensi::with(['Pegawai' => function($query) {
+            $query->select('id', 'Nama'); // hanya ambil id dan nama
+        }])->get();
+
+        return view('Admin.Absensi.Absensi-pdf', $data);
+    }
 }

@@ -10,7 +10,7 @@ class AreaKerja extends Model
 {
     protected $table = 'areakerja';
     protected $fillable = [
-        'id','Nama','Lokasi_UnitKerja','Klasifikasi_Bidang','Tanggal_Mulai','Tanggal_selesai'
+        'id','Nama','Lokasi','Klasifikasi_Bidang','Tanggal_Mulai','Tanggal_selesai'
     ];
     function handLeUploadFoto()
     {

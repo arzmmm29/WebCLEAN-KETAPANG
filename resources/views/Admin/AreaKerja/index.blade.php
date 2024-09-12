@@ -50,15 +50,13 @@
                                                                 <form action="{{ url('AreaKerja', $areakerja->id) }}"
                                                                     method="POST" class="d-inline">
                                                                     @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                                        <i class="bi bi-trash"></i>
-                                                                    </button>
                                                                 </form>
+                                                                <x-button.delete url="AreaKerja"
+                                                                id="{{ $areakerja->id }}" />
                                                             </div>
                                                         </td>
                                                         <td>{{ $areakerja->pegawai->Nama }}</td>
-                                                        <td>{{ $areakerja->pegawai->Lokasi_UnitKerja }}</td>
+                                                        <td>{{ $areakerja->Lokasi }}</td>
                                                         <td>{{ $areakerja->pegawai->Klasifikasi_Bidang }}</td>
                                                         <td>{{ $areakerja->Tanggal_Mulai }}</td>
                                                         <td>{{ $areakerja->Tanggal_Selesai }}</td>

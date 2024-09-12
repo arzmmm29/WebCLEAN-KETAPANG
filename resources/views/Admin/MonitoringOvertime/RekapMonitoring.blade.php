@@ -8,9 +8,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <a href="{{ url('MonitoringOvertime') }}"
-                                    class="btn btn-sm btn-outline-primary mb-4">
-                                    <i class="bi bi-arrow-left"></i> Kembali
-                                </a>
+                                       class="btn btn-sm btn-outline-primary mb-4">
+                                        <i class="bi bi-arrow-left"></i> Kembali
+                                    </a>
                                     <h4 class="card-title">Rekap Monitoring Overtime</h4>
                                     <div class="bootstrap-data-table-panel">
                                         <div class="table-responsive">
@@ -27,7 +27,9 @@
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $data['nama'] }}</td>
-                                                            <td>{{ $data['Total Jam Lembur'] }} Jam</td>
+                                                            <td style="{{ $data['Total Jam Lembur'] > 48 ? 'color: red;' : '' }}">
+                                                                {{ $data['Total Jam Lembur'] }} Jam
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

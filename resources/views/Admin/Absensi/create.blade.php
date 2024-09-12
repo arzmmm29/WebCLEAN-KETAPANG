@@ -1,8 +1,9 @@
 <x-app>
-    <link href="{{ url('/') }}/admin-assets/assets/vendor/select2/css/select2.min.css" rel="stylesheet"
-        type="text/css" />
+    <!-- Include necessary CSS and JS -->
+    <link href="{{ url('/') }}/admin-assets/assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <script src="{{ url('/') }}/admin-assets/assets/vendor/select2/js/select2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -15,6 +16,8 @@
                                     <a href="{{ url('Absensi') }}" class="btn btn-sm btn-outline-primary mb-4">
                                         <i class="bi bi-arrow-left"></i> Kembali
                                     </a>
+
+                                    <!-- Display validation errors -->
                                     @if ($errors->any())
                                         <div class="alert alert-danger">
                                             <ul>
@@ -24,14 +27,17 @@
                                             </ul>
                                         </div>
                                     @endif
+
                                     <form action="{{ url('Absensi') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-md-12 my-2">
                                             <div class="row">
+                                                <!-- Date input -->
                                                 <div class="col-md-2">
-                                                    <input type="date" name="tgl_absensi" id="tglAbsensi"
-                                                        class="form-control">
+                                                    <input type="date" name="tgl_absensi" id="tglAbsensi" class="form-control">
                                                 </div>
+
+                                                <!-- Shift select -->
                                                 <div class="col-md-2">
                                                     <select id="shift" name="shif" class="form-select">
                                                         <option value="">Pilih Shift</option>
@@ -43,6 +49,8 @@
                                                         <option value="MP">MP</option>
                                                     </select>
                                                 </div>
+
+                                                <!-- Hari Kerja select -->
                                                 <div class="col-md-2">
                                                     <select id="hari_kerja" name="Hari_Kerja" class="form-select">
                                                         <option value="">Pilih Status Hari</option>
@@ -51,31 +59,26 @@
                                                     </select>
                                                 </div>
 
+                                                <!-- Pegawai select -->
                                                 <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-md-10">
-                                                            <select class="select2 form-control select2-multiple"
-                                                                data-toggle="select2" multiple="multiple"
-                                                                data-placeholder="Pilih Pegawai" id="pegawaiId"
-                                                                name="pegawai_id[]">
+                                                            <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Pilih Pegawai" id="pegawaiId" name="pegawai_id[]">
                                                                 <option value="">Pilih Pegawai</option>
                                                                 @foreach ($list_pegawai as $pegawai)
-                                                                    <option value="{{ $pegawai->id }}">
-                                                                        {{ $pegawai->Nama }}
-                                                                    </option>
+                                                                    <option value="{{ $pegawai->id }}">{{ $pegawai->Nama }}</option>
                                                                 @endforeach
                                                             </select>
-
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <button id="btnGas" type="button"
-                                                                class="btn btn-sm btn-dark">Pilih</button>
+                                                            <button id="btnGas" type="button" class="btn btn-sm btn-dark">Pilih</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
+                                        <!-- Table -->
                                         <div class="table-responsive">
                                             <table class="table table-bordered" style="display:none;" id="pegawaiTable">
                                                 <thead>
@@ -84,8 +87,7 @@
                                                         <th>Nama Pegawai</th>
                                                         <th>Shift</th>
                                                         <th>Status Hari</th>
-                                                        <th width="200px" class="text-center"><input type="checkbox"
-                                                                id="select_all"></th>
+                                                        <th width="200px" class="text-center"><input type="checkbox" id="select_all"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -93,14 +95,13 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="mt-4 d-flex justify-content-end">
-                                            <button class="btn btn-outline-danger btn-sm" type="button"
-                                                onclick="window.location.href='{{ url('Absensi') }}'">BATAL</button>
-                                            <button class="btn btn-outline-primary btn-sm ms-2"
-                                                type="submit">SIMPAN</button>
+
+                                        <!-- Buttons (initially hidden) -->
+                                        <div class="mt-4 d-flex justify-content-end" id="actionButtons" style="display: none;">
+                                            <button class="btn btn-outline-danger btn-sm" type="button" onclick="window.location.href='{{ url('Absensi') }}'">BATAL</button>
+                                            <button class="btn btn-outline-primary btn-sm ms-2" type="submit">SIMPAN</button>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -110,16 +111,17 @@
         </div>
     </div>
 
-    <!-- Load JavaScript Libraries -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <style>
         .select2-selection__choice__display {
-            color: black
+            color: black;
         }
     </style>
+
     <script>
         $(document).ready(function() {
             $('#pegawaiId').select2({
@@ -128,14 +130,10 @@
             });
         });
 
-
         document.getElementById('btnGas').addEventListener('click', function() {
             var shift = document.getElementById('shift').value;
             var hariKerja = document.getElementById('hari_kerja').value;
-
-            var selectedPegawai = Array.from(document.querySelectorAll('#pegawaiId option:checked')).map(option =>
-                option.value);
-
+            var selectedPegawai = Array.from(document.querySelectorAll('#pegawaiId option:checked')).map(option => option.value);
             var table = document.getElementById('pegawaiTable');
             var tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
@@ -147,20 +145,20 @@
                 selectedPegawai.forEach((pegawaiId, index) => {
                     var row = document.createElement('tr');
                     row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${document.querySelector(`#pegawaiId option[value="${pegawaiId}"]`).textContent}</td>
-                <td>${shift}</td>
-                <td>${hariKerja}</td>
-                <td>
-                    <select name="Status_Kehadiran[]" class="form-select status-kehadiran">
-                        <option value="">Pilih Status</option>
-                        <option value="Hadir">Hadir</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                        <option value="Izin">Izin</option>
-                        <option value="Sakit">Sakit</option>
-                    </select>
-                </td>
-            `;
+                        <td>${index + 1}</td>
+                        <td>${document.querySelector(`#pegawaiId option[value="${pegawaiId}"]`).textContent}</td>
+                        <td>${shift}</td>
+                        <td>${hariKerja}</td>
+                        <td>
+                            <select name="Status_Kehadiran[]" class="form-select status-kehadiran">
+                                <option value="">Pilih Status</option>
+                                <option value="Hadir">Hadir</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                                <option value="Izin">Izin</option>
+                                <option value="Sakit">Sakit</option>
+                            </select>
+                        </td>
+                    `;
                     tbody.appendChild(row);
 
                     // Add a hidden input for each selected pegawai ID
@@ -171,16 +169,14 @@
                     document.querySelector('form').appendChild(input);
                 });
 
-
                 table.style.display = 'table';
+
+                // Show action buttons when table is displayed
+                document.getElementById('actionButtons').style.display = 'flex';
             } else {
                 alert('Harap pilih shift, status hari, dan pegawai terlebih dahulu.');
             }
         });
-
-
-
-
 
         document.getElementById('select_all').addEventListener('change', function() {
             let statusSelects = document.querySelectorAll('.status-kehadiran');

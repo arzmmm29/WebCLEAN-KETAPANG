@@ -28,7 +28,7 @@ class AreaKerjaController extends Controller
         $areakerja->pegawai_id = $request->input('pegawai_id');
 
         // $areakerja->Nama = request('Nama');
-        $areakerja->Lokasi_UnitKerja = request('Lokasi_UnitKerja');
+        $areakerja->Lokasi = request('Lokasi');
         $areakerja->Klasifikasi_Bidang = request('Klasifikasi_Bidang');
         $areakerja->Tanggal_Mulai = request('Tanggal_Mulai');
         $areakerja->Tanggal_Selesai = request('Tanggal_Selesai');
@@ -66,7 +66,7 @@ class AreaKerjaController extends Controller
             // Validasi data
             $request->validate([
                 'pegawai_id' => 'required',
-                'Lokasi_UnitKerja' => 'required',
+                'Lokasi' => 'required',
                 'Klasifikasi_Bidang' => 'required',
                 'Tanggal_Mulai' => 'required|date',
                 'Tanggal_Selesai' => 'required|date',
@@ -77,7 +77,7 @@ class AreaKerjaController extends Controller
 
             // Update data
             $areakerja->pegawai_id = $request->pegawai_id;
-            $areakerja->Lokasi_UnitKerja = $request->Lokasi_UnitKerja;
+            $areakerja->Lokasi = $request->Lokasi;
             $areakerja->Klasifikasi_Bidang = $request->Klasifikasi_Bidang;
             $areakerja->Tanggal_Mulai = $request->Tanggal_Mulai;
             $areakerja->Tanggal_Selesai = $request->Tanggal_Selesai;

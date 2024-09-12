@@ -23,6 +23,7 @@
                                         <form method="GET" action="{{ url('RekapAbsensi') }}" >
                                             <div class="row">
                                                 <div class="col-md-4">
+
                                                     <div class="form-group">
                                                         {{-- <label for="filter_month">Filter Bulan:</label> --}}
                                                         <input type="month" id="filter_month" name="filter_month"

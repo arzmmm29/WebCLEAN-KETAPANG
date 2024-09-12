@@ -28,14 +28,14 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="Lokasi_UnitKerja" class="form-label">Lokasi/Unit Kerja</label>
-                                <input type="text" class="form-control @error('Lokasi_UnitKerja') is-invalid @enderror" id="Lokasi_UnitKerja" name="Lokasi_UnitKerja" value="{{ old('Lokasi_UnitKerja', $areakerja->Lokasi_UnitKerja) }}" required>
-                                @error('Lokasi_UnitKerja')
+                                <input type="text" class="form-control @error('Lokasi') is-invalid @enderror" id="Lokasi" name="Lokasi" value="{{ old('Lokasi', $areakerja->Lokasi) }}" required>
+                                @error('Lokasi')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="Klasifikasi_Bidang" class="form-label">Klasifikasi Bidang</label>
-                                <input type="text" class="form-control @error('Klasifikasi_Bidang') is-invalid @enderror" id="Klasifikasi_Bidang" name="Klasifikasi_Bidang" value="{{ old('Klasifikasi_Bidang', $areakerja->Klasifikasi_Bidang) }}" required>
+                                <input type="text" class="form-control @error('Klasifikasi_Bidang') is-invalid @enderror" id="Klasifikasi_Bidang" name="Klasifikasi_Bidang" value="{{ old('Klasifikasi_Bidang', $areakerja->pegawai->Klasifikasi_Bidang) }}" required>
                                 @error('Klasifikasi_Bidang')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
